@@ -1,10 +1,16 @@
 const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
+const mongoose =require('mongoose');
 
+mongoose.connect('mongodb://localhost/cs8').then(() =>
+  console.log('\n===connected to mongo===\n'))
+
+.catch(err =>console.log('not connected'));
 const bearController = require('./bears/bearController');
 
 const server = express();
+
 
 server.use(helmet());
 server.use(cors());
